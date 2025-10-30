@@ -2,9 +2,9 @@
 
 ![Logo do Projeto](web_app/static/images/logo.jpg)
 
-<img width="1219" height="601" alt="image" src="https://github.com/user-attachments/assets/17d900fd-df35-4812-aaf8-8c877d11e07d" />
-
 **Hand-Decode AI** é uma aplicação web de Machine Learning full-stack que permite aos usuários treinar e testar um modelo de Inteligência Artificial para reconhecimento de dígitos escritos à mão em tempo real, diretamente no navegador.
+
+<img width="1219" height="601" alt="image" src="https://github.com/user-attachments/assets/17d900fd-df35-4812-aaf8-8c877d11e07d" />
 
 ### ✨ Funcionalidades Principais
 
@@ -81,3 +81,4 @@ Este projeto foi construído com as seguintes tecnologias:
     ```
 
 5.  **Acesse:** Abra seu navegador e vá para `http://127.0.0.1:5000`.
+
