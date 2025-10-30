@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-B">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hand-Decode AI</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo.jpg') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Logo" class="logo-symbol">
+
+        <div class="header-text">
+            <h1>Hand-Decode AI</h1>
+            <p>Inteligência Artificial para reconhecimento de dígitos desenhados à mão.</p>
+            <p class="model-info">Nosso modelo utiliza uma Rede Neural Convolucional (CNN) treinada em PyTorch.</p>
+        </div>
+
+        <button id="btnReadme" class="btn btn-readme">Leia-me</button>
+    </header>
+
+    <div class="main-container">
+
+        <div class="column-container" id="train-container">
+            <h3>Treinar Novo Modelo</h3>
+
+            <label for="deviceSelector">Processar em:</label>
+            <select id="deviceSelector" class="select-box">
+                <option value="auto">Auto-detectar (GPU/CPU)</option>
+                <option value="cuda" {% if not cuda_available %}disabled{% endif %}>
+                    Forçar GPU (NVIDIA CUDA) {% if not cuda_available %}(Não disponível){% endif %}
+                </option>
+                <option value="cpu">Forçar CPU</option>
+            </select>
+
+            <button id="btnTrain" class="btn btn-train">Iniciar Treinamento</button>
+
+            <div class="log-group">
+                <p>Acompanhar log de Treinamento abaixo:</p>
+                <pre id="train-log">Aguardando início do treinamento...</pre>
+            </div>
+        </div>
+
+        <div class="column-container" id="test-container">
+            <h3>Testar Modelo</h3>
+
+            <div class="canvas-container">
+                <canvas id="drawingCanvas" width="280" height="280"></canvas>
+                <div id="canvas-overlay">
+                    <span>Treinamento em andamento...</span>
+                </div>
+            </div>
+
+            <h2 id="resultText">Desenhe um número (0-9) acima</h2>
+
+            <div class="button-container">
+                <button id="btnPredict" class="btn btn-predict">Realizar Previsão</button>
+                <button id="btnClear" class="btn btn-clear">Limpar Tela</button>
+            </div>
+        </div>
+
+    </div> <div id="readmeModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="modalClose" class="modal-close">&times;</button>
+
+            <h2>🎨 Sobre o Hand-Decode AI</h2>
+            <p>
+                <strong>Hand-Decode AI</strong> é uma aplicação web de Machine Learning full-stack que permite aos usuários treinar e testar um modelo de Inteligência Artificial para reconhecimento de dígitos escritos à mão em tempo real, diretamente no navegador.
+            </p>
+
+            <h3>✨ Funcionalidades Principais</h3>
+            <ul>
+                <li><strong>Interface de Teste (Inferência):</strong> Desenhe um dígito (0-9) e receba a previsão em tempo real.</li>
+                <li><strong>Interface de Treinamento (MLOps):</strong> Inicie um novo ciclo de treinamento do modelo pela interface web.</li>
+                <li><strong>Feedback em Tempo Real:</strong> Acompanhe o log de treinamento (progresso, acurácia) através de um stream de dados.</li>
+                <li><strong>Detecção de Hardware:</strong> A interface identifica se o servidor possui uma GPU NVIDIA (CUDA) e habilita/desabilita opções dinamicamente.</li>
+                <li><strong>Pré-processamento Inteligente:</strong> O sistema usa a biblioteca PIL para inverter, encontrar, cortar e centralizar o dígito desenhado, aumentando drasticamente a acurácia.</li>
+                <li><strong>Feedback por Voz (TTS):</strong> O navegador utiliza a API de Fala (Web Speech API) para "falar" o número previsto.</li>
+            </ul>
+
+            <h3>🧠 O Modelo (Deep Learning)</h3>
+            <p>O cérebro por trás do projeto é uma <strong>Rede Neural Convolucional (CNN)</strong>, construída em PyTorch.</p>
+            <ul>
+                <li><strong>Arquitetura:</strong> 2 Camadas Convolucionais (com ReLU), 1 Camada de MaxPool, Dropout, e 2 Camadas Lineares (totalmente conectadas).</li>
+                <li><strong>Dataset:</strong> O modelo é treinado no clássico dataset <strong>MNIST</strong>.</li>
+                <li><strong>Data Augmentation:</strong> Para robustez, aplicamos Rotação, Translação e Inclinação (Shear) aleatórias.</li>
+            </ul>
+
+            <h3>🛠️ Pilha Tecnológica (Tech Stack)</h3>
+            <ul>
+                <li><strong>Linguagem:</strong> Python</li>
+                <li><strong>IDE:</strong> Visual Studio Code</li>
+                <li><strong>Backend:</strong> Flask</li>
+                <li><strong>Deep Learning:</strong> PyTorch</li>
+                <li><strong>Processamento de Imagem:</strong> Pillow (PIL)</li>
+                <li><strong>Frontend:</strong> HTML5 (Canvas), CSS3 (Flexbox/Grid), JavaScript (Fetch API, EventSource, Web Speech API)</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/draw.js') }}"></script>
+</body>
+</html>
