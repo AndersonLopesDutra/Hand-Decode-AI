@@ -2,7 +2,7 @@
 
 ![Logo do Projeto](web_app/static/images/logo.jpg)
 
-O Hand-Decode AI é um projeto de Aplicação web MLOps full-stack para treinar e testar um modelo de Deep Learning (PyTorch CNN) para reconhecimento de dígitos em tempo real, com feedback de treino via stream, resposta por voz e servido por Flask. ( Leia a mais abaixo )
+O Hand-Decode AI é um projeto de Aplicação web full-stack MLOps para treinar e testar um modelo de Deep Learning no reconhecimento de dígitos em tempo real. O modelo utilizado é uma CNN (Convolutional Neural Network), construída do zero em PyTorch, composta por camadas e neurônios, aplicando camadas convolucionais para extração de padrões visuais e camadas totalmente conectadas para a classificação dos dígitos. A aplicação conta com feedback de treino via stream, resposta por voz e deploy em Flask, simulando um fluxo completo de IA em produção.
 
 
 <img width="1219" height="601" alt="image" src="https://github.com/user-attachments/assets/17d900fd-df35-4812-aaf8-8c877d11e07d" />
